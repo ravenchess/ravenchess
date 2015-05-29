@@ -1,8 +1,7 @@
 Introduction
 ============
 
-[Raven](http://www.ravenchess.com) is an open-source UCI [[2]](#uci) chess engine.
-
+[Raven](http://www.ravenchess.com) is an open-source UCI [[2](#uci)] chess engine.
 
 Terms of Use
 ============

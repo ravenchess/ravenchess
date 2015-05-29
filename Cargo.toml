@@ -1,0 +1,16 @@
+[package]
+name = "raven"
+version = "0.1.0"
+authors = ["Nam Pham <nam@ravenchess.com>"]
+license = "GPLv3"
+readme = "README.md"
+repository = ""
+documentation = ""
+homepage = ""
+description = """
+A high performance chess engine in Rust.
+"""
+
+[dependencies]
+log = "0.3.1"
+env_logger = "0.3.1"
