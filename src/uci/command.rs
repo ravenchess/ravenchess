@@ -14,17 +14,33 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use super::types::{Command, TokenParser, ParseError, UCI_SIG};
+use super::types::*;
 
-pub enum CmdUci {
+use super::cmd_uci::CmdUci;
+use super::cmd_debug::CmdDebug;
+use super::cmd_isready::CmdIsReady;
+
+impl Command {
+    // Normalize and tokenize a string
+    fn tokenize(cmd: &str) -> Vec<&str> {
+        cmd.split(' ').filter(|s| s.trim().len() > 0).collect()
+    }
 }
 
-impl TokenParser for CmdUci {
-    fn parse(tokens: Vec<&str>) -> Result<Command, ParseError> {
-        if tokens.len() != 1 || tokens[0] != UCI_SIG {
+impl CommandParser for Command {
+    fn parse(line: &str) -> Result<Self, ParseError> {
+        let tokens = Command::tokenize(line);
+
+        if tokens.len() == 0 {
             return Err(ParseError::InvalidCommand);
         }
-        Ok(Command::UCI)
+
+        match tokens[0] {
+            UCI_SIG => CmdUci::parse(tokens),
+            DEBUG_SIG => CmdDebug::parse(tokens),
+            ISREADY_SIG => CmdIsReady::parse(tokens),
+            _ => return Err(ParseError::InvalidCommand),
+        }
     }
 }
 

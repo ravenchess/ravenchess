@@ -14,16 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-mod uci;
-mod types;
-mod command;
-
-mod cmd_uci;
-mod cmd_debug;
-mod cmd_isready;
-
-#[cfg(test)]
-mod test;
-
-pub use self::uci::UCI;
+mod cmd_uci_test;
+mod cmd_debug_test;
+mod cmd_isready_test;
 

@@ -14,16 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-mod uci;
-mod types;
-mod command;
+use super::types::{Command, TokenParser, ParseError, ISREADY_SIG};
 
-mod cmd_uci;
-mod cmd_debug;
-mod cmd_isready;
+pub enum CmdIsReady {
+}
 
-#[cfg(test)]
-mod test;
-
-pub use self::uci::UCI;
+impl TokenParser for CmdIsReady {
+    fn parse(tokens: Vec<&str>) -> Result<Command, ParseError> {
+        if tokens.len() != 1 || tokens[0] != ISREADY_SIG {
+            return Err(ParseError::InvalidCommand);
+        }
+        Ok(Command::ISREADY)
+    }
+}
 

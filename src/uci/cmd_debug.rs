@@ -14,16 +14,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-mod uci;
-mod types;
-mod command;
+use super::types::{Command, TokenParser, ParseError, DEBUG_SIG};
 
-mod cmd_uci;
-mod cmd_debug;
-mod cmd_isready;
+pub enum CmdDebug {
+}
 
-#[cfg(test)]
-mod test;
+const ON: &'static str = "on";
+const OFF: &'static str = "off";
 
-pub use self::uci::UCI;
+impl TokenParser for CmdDebug {
+    fn parse(tokens: Vec<&str>) -> Result<Command, ParseError> {
+        if tokens.len() != 2 || tokens[0] != DEBUG_SIG {
+            return Err(ParseError::InvalidCommand);
+        }
+
+        match tokens[1] {
+            ON => Ok(Command::DEBUG { enabled: true }),
+            OFF => Ok(Command::DEBUG { enabled: false }),
+            _ => Err(ParseError::InvalidCommand),
+        }
+    }
+}
 
