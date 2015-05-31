@@ -23,6 +23,7 @@ mod cmd_debug;
 mod cmd_isready;
 mod cmd_setoption;
 mod cmd_register;
+mod cmd_ucinewgame;
 
 #[cfg(test)]
 mod test;

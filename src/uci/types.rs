@@ -44,6 +44,7 @@ pub const DEBUG_SIG: &'static str = "debug";
 pub const ISREADY_SIG: &'static str = "isready";
 pub const SETOPTION_SIG: &'static str = "setoption";
 pub const REGISTER_SIG: &'static str = "register";
+pub const UCINEWGAME_SIG: &'static str = "ucinewgame";
 
 pub enum ParseError { InvalidCommand }
 

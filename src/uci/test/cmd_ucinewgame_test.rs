@@ -14,9 +14,29 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-mod cmd_uci_test;
-mod cmd_debug_test;
-mod cmd_isready_test;
-mod cmd_setoption_test;
-mod cmd_register_test;
-mod cmd_ucinewgame_test;
+use super::super::types::*;
+
+#[test]
+fn test_create_good_ucinewgame_command() {
+    let r = Command::parse("ucinewgame");
+    assert!(r.is_ok());
+
+    let cmd = r.ok().unwrap();
+    assert!(cmd == Command::UCINEWGAME);
+}
+
+#[test]
+fn test_create_good_ucinewgame_command_with_spaces() {
+    let r = Command::parse("     ucinewgame    ");
+    assert!(r.is_ok());
+
+    let cmd = r.ok().unwrap();
+    assert!(cmd == Command::UCINEWGAME);
+}
+
+#[test]
+fn test_create_good_ucinewgame_command_but_with_extra_params() {
+    let r = Command::parse("ucinewgame param1 param2");
+    assert!(r.is_err());
+}
+

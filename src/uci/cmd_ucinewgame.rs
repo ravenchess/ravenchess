@@ -14,9 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-mod cmd_uci_test;
-mod cmd_debug_test;
-mod cmd_isready_test;
-mod cmd_setoption_test;
-mod cmd_register_test;
-mod cmd_ucinewgame_test;
+use super::types::{Command, TokenParser, ParseError, UCINEWGAME_SIG};
+
+pub enum CmdUciNewGame {
+}
+
+impl TokenParser for CmdUciNewGame {
+    fn parse(tokens: Vec<&str>) -> Result<Command, ParseError> {
+        if tokens.len() != 1 || tokens[0] != UCINEWGAME_SIG {
+            return Err(ParseError::InvalidCommand);
+        }
+        Ok(Command::UCINEWGAME)
+    }
+}
+
