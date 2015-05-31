@@ -20,7 +20,7 @@ pub enum Command {
     UCI,
     DEBUG { enabled: bool },
     ISREADY,
-    SETOPTION,
+    SETOPTION { name: String, value: Option<String> },
     REGISTER,
     UCINEWGAME,
     POSITION,
@@ -42,6 +42,7 @@ pub enum Command {
 pub const UCI_SIG: &'static str = "uci";
 pub const DEBUG_SIG: &'static str = "debug";
 pub const ISREADY_SIG: &'static str = "isready";
+pub const SETOPTION_SIG: &'static str = "setoption";
 
 pub enum ParseError { InvalidCommand }
 

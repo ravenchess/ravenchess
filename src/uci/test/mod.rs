@@ -17,4 +17,5 @@
 mod cmd_uci_test;
 mod cmd_debug_test;
 mod cmd_isready_test;
+mod cmd_setoption_test;
 

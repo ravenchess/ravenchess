@@ -21,6 +21,7 @@ mod command;
 mod cmd_uci;
 mod cmd_debug;
 mod cmd_isready;
+mod cmd_setoption;
 
 #[cfg(test)]
 mod test;
