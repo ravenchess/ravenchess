@@ -20,6 +20,7 @@ use super::cmd_uci::CmdUci;
 use super::cmd_debug::CmdDebug;
 use super::cmd_isready::CmdIsReady;
 use super::cmd_setoption::CmdSetOption;
+use super::cmd_register::CmdRegister;
 
 impl Command {
     // Normalize and tokenize a string
@@ -41,6 +42,7 @@ impl CommandParser for Command {
             DEBUG_SIG => CmdDebug::parse(tokens),
             ISREADY_SIG => CmdIsReady::parse(tokens),
             SETOPTION_SIG => CmdSetOption::parse(tokens),
+            REGISTER_SIG => CmdRegister::parse(tokens),
             _ => return Err(ParseError::InvalidCommand),
         }
     }

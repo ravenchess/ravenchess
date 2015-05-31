@@ -21,7 +21,7 @@ pub enum Command {
     DEBUG { enabled: bool },
     ISREADY,
     SETOPTION { name: String, value: Option<String> },
-    REGISTER,
+    REGISTER { name: Option<String>, code: Option<String> },
     UCINEWGAME,
     POSITION,
     GO,
@@ -43,6 +43,7 @@ pub const UCI_SIG: &'static str = "uci";
 pub const DEBUG_SIG: &'static str = "debug";
 pub const ISREADY_SIG: &'static str = "isready";
 pub const SETOPTION_SIG: &'static str = "setoption";
+pub const REGISTER_SIG: &'static str = "register";
 
 pub enum ParseError { InvalidCommand }
 

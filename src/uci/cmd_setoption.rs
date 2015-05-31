@@ -46,7 +46,7 @@ fn parse_params(tokens: Vec<&str>) -> Option<(String, Option<String>)> {
             if tokens[i] != VALUE {
                 name = name + " " + tokens[i];
             } else {
-                naming = false
+                naming = false;
             }
         } else {
             if val.is_empty() {
