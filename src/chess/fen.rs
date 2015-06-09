@@ -14,10 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-mod cmd_uci_test;
-mod cmd_debug_test;
-mod cmd_isready_test;
-mod cmd_setoption_test;
-mod cmd_register_test;
-mod cmd_ucinewgame_test;
-mod cmd_position_test;
+pub struct Fen {
+    pieces: Vec<PieceSquare>,
+    active: Color,
+    castling: Castling, 
+    
+
+  
+
+}

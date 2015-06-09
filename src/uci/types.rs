@@ -14,8 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+use chess::types::Move;
+
+// A Finite State Machine
+pub trait FSM<T, H> {
+    fn consume(&self, token: &T, handler: &mut H) -> Self;
+    fn next_token(tokens: &Vec<&str>, idx: &mut usize) -> T;
+    fn is_final(&self) -> bool;
+    fn is_err(&self) -> bool;
+}
+
 #[allow(dead_code)]
-#[derive(PartialEq)]
+#[derive(PartialEq, Debug)]
 pub enum Command {
     UCI,
     DEBUG { enabled: bool },
@@ -23,7 +33,7 @@ pub enum Command {
     SETOPTION { name: String, value: Option<String> },
     REGISTER { name: Option<String>, code: Option<String> },
     UCINEWGAME,
-    POSITION,
+    POSITION { fen: Vec<String>, moves: Vec<String> },
     GO,
     STOP,
     PONDERHIT,
@@ -45,6 +55,7 @@ pub const ISREADY_SIG: &'static str = "isready";
 pub const SETOPTION_SIG: &'static str = "setoption";
 pub const REGISTER_SIG: &'static str = "register";
 pub const UCINEWGAME_SIG: &'static str = "ucinewgame";
+pub const POSITION_SIG: &'static str = "position";
 
 pub enum ParseError { InvalidCommand }
 

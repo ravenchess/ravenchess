@@ -14,16 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#[macro_use]
-extern crate log;
-extern crate env_logger;
+pub mod uci;
+pub mod chess;
 
-mod uci;
 use uci::UCI;
 
 fn main() {
-    env_logger::init().unwrap();
-    info!("Starting up ...");
+    println!("Starting up ...");
     UCI::start();
 }
 

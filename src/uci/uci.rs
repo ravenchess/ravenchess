@@ -29,7 +29,7 @@ impl UCI {
             let mut line = String::new();
             let stdin = io::stdin();
             stdin.lock().read_line(&mut line).unwrap();
-            info!("{}", line);
+            println!("{}", line);
             line.clear();
 
             1

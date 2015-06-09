@@ -22,6 +22,7 @@ use super::cmd_isready::CmdIsReady;
 use super::cmd_setoption::CmdSetOption;
 use super::cmd_register::CmdRegister;
 use super::cmd_ucinewgame::CmdUciNewGame;
+use super::cmd_position::CmdPosition;
 
 impl Command {
     // Normalize and tokenize a string
@@ -45,6 +46,7 @@ impl CommandParser for Command {
             SETOPTION_SIG => CmdSetOption::parse(tokens),
             REGISTER_SIG => CmdRegister::parse(tokens),
             UCINEWGAME_SIG => CmdUciNewGame::parse(tokens),
+            POSITION_SIG => CmdPosition::parse(tokens),
             _ => return Err(ParseError::InvalidCommand),
         }
     }

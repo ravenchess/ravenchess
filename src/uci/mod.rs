@@ -24,9 +24,9 @@ mod cmd_isready;
 mod cmd_setoption;
 mod cmd_register;
 mod cmd_ucinewgame;
+mod cmd_position;
 
 #[cfg(test)]
 mod test;
 
 pub use self::uci::UCI;
-
